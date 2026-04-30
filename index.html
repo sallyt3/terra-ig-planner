@@ -16,7 +16,6 @@
     --text-2: #5a5952;
     --text-3: #999890;
     --green: #3B6D11;
-    --green-light: #EAF3DE;
     --radius: 8px;
     --radius-lg: 12px;
     --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -38,14 +37,12 @@
     padding: 1.25rem 1rem 3rem;
   }
 
-  /* Header */
   .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-bottom: 1rem;
     border-bottom: 0.5px solid var(--border);
-    margin-bottom: 0;
     gap: 8px;
     flex-wrap: wrap;
   }
@@ -53,7 +50,6 @@
   .header-sub { font-size: 11px; color: var(--text-3); margin-top: 1px; }
   .header-actions { display: flex; gap: 8px; align-items: center; }
 
-  /* View toggle */
   .view-toggle {
     display: flex;
     border: 0.5px solid var(--border-strong);
@@ -73,7 +69,6 @@
   .view-toggle button + button { border-left: 0.5px solid var(--border); }
   .view-toggle button.active { background: var(--green); color: white; }
 
-  /* Buttons */
   .btn-primary {
     padding: 5px 14px;
     font-size: 13px;
@@ -99,7 +94,6 @@
     font-family: var(--font);
   }
 
-  /* Form */
   #post-form {
     display: none;
     background: var(--surface);
@@ -112,7 +106,7 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
   .form-actions { display: flex; gap: 8px; margin-top: 10px; justify-content: flex-end; }
 
-  input[type="url"], input[type="text"], select, textarea {
+  input[type="url"], select, textarea {
     width: 100%;
     font-size: 13px;
     font-family: var(--font);
@@ -127,11 +121,16 @@
     -webkit-appearance: none;
   }
   input[type="url"]:focus, select:focus, textarea:focus { border-color: var(--green); }
-  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px; cursor: pointer; }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+    cursor: pointer;
+  }
   textarea { height: 68px; resize: vertical; line-height: 1.5; }
   .url-row { margin-bottom: 8px; }
 
-  /* Filters */
   .filter-bar {
     display: flex;
     gap: 5px;
@@ -154,22 +153,16 @@
   }
   .fb.active { background: var(--green); color: white; border-color: var(--green); }
 
-  /* Stats */
   .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 8px;
     margin-bottom: 1.125rem;
   }
-  .stat-card {
-    border-radius: var(--radius);
-    padding: 10px 12px;
-    border: 0.5px solid rgba(0,0,0,0.05);
-  }
+  .stat-card { border-radius: var(--radius); padding: 10px 12px; border: 0.5px solid rgba(0,0,0,0.05); }
   .stat-label { font-size: 11px; margin-bottom: 2px; }
   .stat-val { font-size: 22px; font-weight: 600; }
 
-  /* Grid */
   #grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -177,17 +170,14 @@
   }
   .grid-cell {
     position: relative;
-    aspect-ratio: 1;
+    aspect-ratio: 2 / 3;
     overflow: hidden;
     border: 0.5px solid rgba(0,0,0,0.04);
     cursor: grab;
   }
   .grid-cell:active { cursor: grabbing; }
-  .grid-cell img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+  .grid-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
   .cell-placeholder {
     width: 100%; height: 100%;
     display: flex;
@@ -199,38 +189,24 @@
     inset: 0;
   }
   .cell-ph-dot { width: 18px; height: 18px; border-radius: 50%; opacity: 0.5; }
-  .cell-ph-label { font-size: 10px; font-weight: 500; text-align: center; padding: 0 8px; }
+  .cell-ph-label { font-size: 10px; font-weight: 500; text-align: center; padding: 0 8px; line-height: 1.3; }
+
   .cell-overlay {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    padding: 20px 5px 5px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.38));
+    padding: 28px 5px 5px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.40));
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 4px;
   }
   .cell-badges { display: flex; gap: 3px; flex-wrap: wrap; }
-  .badge {
-    font-size: 9px;
-    padding: 1px 5px;
-    border-radius: 3px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
+  .badge { font-size: 9px; padding: 1px 5px; border-radius: 3px; font-weight: 500; white-space: nowrap; }
   .cell-btns { display: flex; gap: 3px; flex-shrink: 0; }
-  .cell-btn {
-    font-size: 9px;
-    padding: 2px 5px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-family: var(--font);
-    line-height: 1.2;
-  }
+  .cell-btn { font-size: 9px; padding: 2px 5px; border: none; border-radius: 3px; cursor: pointer; font-family: var(--font); line-height: 1.2; }
   .cell-drag-over { outline: 2px solid var(--green); outline-offset: -2px; }
 
-  /* Map */
   #map-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -240,7 +216,7 @@
     border-radius: var(--radius);
     padding: 12px;
     border: 0.5px solid rgba(0,0,0,0.06);
-    aspect-ratio: 1;
+    aspect-ratio: 2 / 3;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -248,12 +224,11 @@
   }
   .map-cell:active { cursor: grabbing; }
   .map-dot { width: 10px; height: 10px; border-radius: 50%; margin-bottom: 8px; }
-  .map-pillar { font-size: 11px; font-weight: 500; }
-  .map-cap { font-size: 10px; opacity: 0.8; margin-top: 4px; line-height: 1.45; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .map-pillar { font-size: 11px; font-weight: 600; line-height: 1.3; }
+  .map-cap { font-size: 10px; opacity: 0.8; margin-top: 5px; line-height: 1.5; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
   .map-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
   .map-btns { display: flex; gap: 3px; }
 
-  /* Empty state */
   #empty-state {
     display: none;
     text-align: center;
@@ -264,7 +239,6 @@
   .empty-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
   .empty-sub { font-size: 13px; line-height: 1.6; max-width: 340px; margin: 0 auto; }
 
-  /* Legend */
   #legend {
     margin-top: 1.5rem;
     padding-top: 1rem;
@@ -274,15 +248,7 @@
     gap: 6px;
     align-items: center;
   }
-  .legend-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-weight: 500;
-  }
+  .legend-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; }
   .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 </style>
 </head>
@@ -297,7 +263,7 @@
     <div class="header-actions">
       <div class="view-toggle">
         <button id="btn-grid" class="active" onclick="setView('grid')">Grid</button>
-        <button id="btn-map" onclick="setView('map')">Pillar map</button>
+        <button id="btn-map" onclick="setView('map')">Category map</button>
       </div>
       <button class="btn-primary" id="add-btn" onclick="toggleForm()">+ Add post</button>
     </div>
@@ -315,15 +281,16 @@
         <option value="posted">Posted</option>
       </select>
       <select id="f-pillar">
-        <option value="">No pillar</option>
-        <option value="sensory">Sensory / Meditative</option>
-        <option value="tactile">Tactile</option>
-        <option value="eco">Eco-Luxury</option>
-        <option value="emotional">Emotional / Heirloom</option>
-        <option value="education">Education / Accessibility</option>
+        <option value="">No category</option>
+        <option value="bts">BTS — Behind the Scenes</option>
+        <option value="glory">Glory Reels — Final Product</option>
+        <option value="wax">Wax Seal Reels</option>
+        <option value="carousel">Informative Carousel</option>
+        <option value="maker">Maker / Studio</option>
+        <option value="wildflower">Wildflower Paper</option>
       </select>
     </div>
-    <textarea id="f-caption" placeholder="Caption (optional — helps in Pillar Map view)"></textarea>
+    <textarea id="f-caption" placeholder="Hook or caption idea (shows in Category Map view)"></textarea>
     <div class="form-actions">
       <button class="btn-ghost" onclick="cancelForm()">Cancel</button>
       <button class="btn-primary" id="save-btn" onclick="savePost()">Save</button>
@@ -337,12 +304,13 @@
     <button class="fb" data-fk="status-scheduled" onclick="setFilter('status','scheduled')">Scheduled</button>
     <button class="fb" data-fk="status-posted" onclick="setFilter('status','posted')">Posted</button>
     <div class="filter-sep"></div>
-    <span class="filter-label">Pillar</span>
-    <button class="fb" data-fk="pillar-sensory" onclick="setFilter('pillar','sensory')">Sensory</button>
-    <button class="fb" data-fk="pillar-tactile" onclick="setFilter('pillar','tactile')">Tactile</button>
-    <button class="fb" data-fk="pillar-eco" onclick="setFilter('pillar','eco')">Eco-Luxury</button>
-    <button class="fb" data-fk="pillar-emotional" onclick="setFilter('pillar','emotional')">Emotional</button>
-    <button class="fb" data-fk="pillar-education" onclick="setFilter('pillar','education')">Education</button>
+    <span class="filter-label">Category</span>
+    <button class="fb" data-fk="pillar-bts" onclick="setFilter('pillar','bts')">BTS</button>
+    <button class="fb" data-fk="pillar-glory" onclick="setFilter('pillar','glory')">Glory</button>
+    <button class="fb" data-fk="pillar-wax" onclick="setFilter('pillar','wax')">Wax</button>
+    <button class="fb" data-fk="pillar-carousel" onclick="setFilter('pillar','carousel')">Carousel</button>
+    <button class="fb" data-fk="pillar-maker" onclick="setFilter('pillar','maker')">Maker</button>
+    <button class="fb" data-fk="pillar-wildflower" onclick="setFilter('pillar','wildflower')">Wildflower</button>
   </div>
 
   <div class="stats" id="stats"></div>
@@ -358,7 +326,7 @@
   <div id="empty-state">
     <div class="empty-icon">⬜</div>
     <div class="empty-title">Your grid is empty</div>
-    <div class="empty-sub">Add your first post to start planning. Paste any public image URL — Google Drive (set to "Anyone with the link"), Dropbox, or any hosted image.</div>
+    <div class="empty-sub">Add your first post to start planning. No image yet? Just add a category and hook idea — the placeholder will hold its spot in the grid.</div>
   </div>
 
   <div id="legend"></div>
@@ -367,12 +335,13 @@
 
 <script>
 const PC = {
-  sensory:   { label: 'Sensory',    bg: '#EAF3DE', color: '#3B6D11', dot: '#639922' },
-  tactile:   { label: 'Tactile',    bg: '#FAEEDA', color: '#854F0B', dot: '#BA7517' },
-  eco:       { label: 'Eco-Luxury', bg: '#E1F5EE', color: '#0F6E56', dot: '#1D9E75' },
-  emotional: { label: 'Emotional',  bg: '#FAECE7', color: '#993C1D', dot: '#D85A30' },
-  education: { label: 'Education',  bg: '#E6F1FB', color: '#185FA5', dot: '#378ADD' },
-  '':        { label: 'No pillar',  bg: '#F1EFE8', color: '#5F5E5A', dot: '#888780' }
+  bts:        { label: 'BTS',         short: 'BTS',       bg: '#FAEEDA', color: '#854F0B', dot: '#BA7517' },
+  glory:      { label: 'Glory Reels', short: 'Glory',     bg: '#FAECE7', color: '#993C1D', dot: '#D85A30' },
+  wax:        { label: 'Wax Seals',   short: 'Wax',       bg: '#FBEAF0', color: '#72243E', dot: '#D4537E' },
+  carousel:   { label: 'Carousel',    short: 'Carousel',  bg: '#E6F1FB', color: '#185FA5', dot: '#378ADD' },
+  maker:      { label: 'Maker',       short: 'Maker',     bg: '#F1EFE8', color: '#444441', dot: '#888780' },
+  wildflower: { label: 'Wildflower',  short: 'Wildflower',bg: '#E1F5EE', color: '#0F6E56', dot: '#1D9E75' },
+  '':         { label: 'No category', short: '—',         bg: '#f2f0ec', color: '#888780', dot: '#B4B2A9' }
 };
 const SC = {
   draft:     { label: 'Draft',     bg: '#F1EFE8', color: '#444441' },
@@ -380,34 +349,21 @@ const SC = {
   posted:    { label: 'Posted',    bg: '#EAF3DE', color: '#173404' }
 };
 
-const STORE_KEY = 'terra-grid-planner-v1';
+const STORE_KEY = 'terra-grid-planner-v2';
 
-let posts = [];
-let view = 'grid';
-let fStatus = 'all';
-let fPillar = 'all';
-let editId = null;
-let dragId = null;
+let posts = [], view = 'grid', fStatus = 'all', fPillar = 'all', editId = null, dragId = null;
 
 function load() {
-  try {
-    const raw = localStorage.getItem(STORE_KEY);
-    if (raw) posts = JSON.parse(raw);
-  } catch(e) { posts = []; }
+  try { const r = localStorage.getItem(STORE_KEY); if (r) posts = JSON.parse(r); } catch(e) { posts = []; }
 }
-
 function save() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify(posts)); } catch(e) {}
 }
-
-function uid() {
-  return Math.random().toString(36).slice(2) + Date.now().toString(36);
-}
+function uid() { return Math.random().toString(36).slice(2) + Date.now().toString(36); }
 
 function toggleForm() {
   const f = document.getElementById('post-form');
-  const open = f.style.display !== 'none';
-  if (open) { cancelForm(); return; }
+  if (f.style.display !== 'none') { cancelForm(); return; }
   editId = null;
   f.style.display = 'block';
   document.getElementById('form-title').textContent = 'Add post';
@@ -453,16 +409,13 @@ function savePost() {
   } else {
     posts.push({ id: uid(), url, status, pillar, caption });
   }
-  save();
-  cancelForm();
-  render();
+  save(); cancelForm(); render();
 }
 
 function del(id) {
   if (!confirm('Remove this post?')) return;
   posts = posts.filter(x => x.id !== id);
-  save();
-  render();
+  save(); render();
 }
 
 function setFilter(type, val) {
@@ -487,7 +440,6 @@ function filtered() {
   );
 }
 
-// Drag & drop
 function onDragStart(e, id) {
   dragId = id;
   e.dataTransfer.effectAllowed = 'move';
@@ -496,7 +448,6 @@ function onDragStart(e, id) {
 function onDragEnd(e) { e.target.style.opacity = ''; }
 function onDragOver(e) {
   e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
   document.querySelectorAll('.cell-drag-over').forEach(el => el.classList.remove('cell-drag-over'));
   e.currentTarget.classList.add('cell-drag-over');
 }
@@ -510,50 +461,22 @@ function onDrop(e, targetId) {
   const ti = posts.findIndex(p => p.id === targetId);
   posts.splice(ti, 0, moved);
   dragId = null;
-  save();
-  render();
+  save(); render();
 }
 
-function renderStats() {
-  const total = posts.length;
-  const byS = { draft: 0, scheduled: 0, posted: 0 };
-  posts.forEach(p => { if (byS[p.status] !== undefined) byS[p.status]++; });
-  document.getElementById('stats').innerHTML = `
-    <div class="stat-card" style="background:var(--surface);border-color:var(--border);">
-      <div class="stat-label" style="color:var(--text-2);">Total</div>
-      <div class="stat-val" style="color:var(--text);">${total}</div>
-    </div>
-    <div class="stat-card" style="background:#F1EFE8;">
-      <div class="stat-label" style="color:#5F5E5A;">Draft</div>
-      <div class="stat-val" style="color:#444441;">${byS.draft}</div>
-    </div>
-    <div class="stat-card" style="background:#FAEEDA;">
-      <div class="stat-label" style="color:#854F0B;">Scheduled</div>
-      <div class="stat-val" style="color:#633806;">${byS.scheduled}</div>
-    </div>
-    <div class="stat-card" style="background:#EAF3DE;">
-      <div class="stat-label" style="color:#3B6D11;">Posted</div>
-      <div class="stat-val" style="color:#173404;">${byS.posted}</div>
-    </div>
-  `;
-}
-
-function renderFilters() {
-  document.querySelectorAll('.fb').forEach(btn => {
-    const k = btn.dataset.fk;
-    const active = k === `status-${fStatus}` || (k === 'status-all' && fStatus === 'all') || k === `pillar-${fPillar}`;
-    btn.classList.toggle('active', active);
-  });
-}
-
-function renderLegend() {
-  const legend = document.getElementById('legend');
-  legend.innerHTML = `<span class="filter-label" style="margin-right:4px;">Pillars</span>` +
-    Object.entries(PC).map(([k, v]) =>
-      `<span class="legend-pill" style="background:${v.bg};color:${v.color};">
-        <span class="legend-dot" style="background:${v.dot};"></span>${v.label}
-      </span>`
-    ).join('');
+function buildPlaceholder(pc) {
+  const ph = document.createElement('div');
+  ph.className = 'cell-placeholder';
+  const dot = document.createElement('div');
+  dot.className = 'cell-ph-dot';
+  dot.style.background = pc.dot;
+  const lbl = document.createElement('div');
+  lbl.className = 'cell-ph-label';
+  lbl.style.color = pc.color;
+  lbl.textContent = pc.label;
+  ph.appendChild(dot);
+  ph.appendChild(lbl);
+  return ph;
 }
 
 function buildCell(p) {
@@ -588,16 +511,14 @@ function buildCell(p) {
   badges.className = 'cell-badges';
   const sb = document.createElement('span');
   sb.className = 'badge';
-  sb.style.background = sc.bg;
-  sb.style.color = sc.color;
+  sb.style.cssText = `background:${sc.bg};color:${sc.color};`;
   sb.textContent = sc.label;
   badges.appendChild(sb);
   if (p.pillar) {
     const pb = document.createElement('span');
     pb.className = 'badge';
-    pb.style.background = pc.bg;
-    pb.style.color = pc.color;
-    pb.textContent = pc.label;
+    pb.style.cssText = `background:${pc.bg};color:${pc.color};`;
+    pb.textContent = pc.short;
     badges.appendChild(pb);
   }
 
@@ -615,26 +536,10 @@ function buildCell(p) {
   delBtn.addEventListener('click', e => { e.stopPropagation(); del(p.id); });
   btns.appendChild(editBtn);
   btns.appendChild(delBtn);
-
   overlay.appendChild(badges);
   overlay.appendChild(btns);
   div.appendChild(overlay);
   return div;
-}
-
-function buildPlaceholder(pc) {
-  const ph = document.createElement('div');
-  ph.className = 'cell-placeholder';
-  const dot = document.createElement('div');
-  dot.className = 'cell-ph-dot';
-  dot.style.background = pc.dot;
-  const lbl = document.createElement('div');
-  lbl.className = 'cell-ph-label';
-  lbl.style.color = pc.color;
-  lbl.textContent = pc.label;
-  ph.appendChild(dot);
-  ph.appendChild(lbl);
-  return ph;
 }
 
 function buildMapCell(p) {
@@ -663,7 +568,7 @@ function buildMapCell(p) {
     const cap = document.createElement('div');
     cap.className = 'map-cap';
     cap.style.color = pc.color;
-    cap.textContent = p.caption.substring(0, 80) + (p.caption.length > 80 ? '…' : '');
+    cap.textContent = p.caption;
     top.appendChild(cap);
   }
 
@@ -671,36 +576,74 @@ function buildMapCell(p) {
   footer.className = 'map-footer';
   const sb = document.createElement('span');
   sb.className = 'badge';
-  sb.style.background = sc.bg;
-  sb.style.color = sc.color;
+  sb.style.cssText = `background:${sc.bg};color:${sc.color};`;
   sb.textContent = sc.label;
   const mapBtns = document.createElement('div');
   mapBtns.className = 'map-btns';
   const editBtn = document.createElement('button');
   editBtn.className = 'cell-btn';
-  editBtn.style.cssText = `background:rgba(255,255,255,0.7);color:#333;`;
+  editBtn.style.cssText = 'background:rgba(255,255,255,0.7);color:#333;';
   editBtn.textContent = 'Edit';
   editBtn.addEventListener('click', () => openEdit(p.id));
   const delBtn = document.createElement('button');
   delBtn.className = 'cell-btn';
-  delBtn.style.cssText = `background:rgba(200,50,30,0.15);color:${pc.color === '#993C1D' ? '#993C1D' : '#993C1D'};`;
+  delBtn.style.cssText = 'background:rgba(200,50,30,0.15);color:#993C1D;';
   delBtn.textContent = '✕';
   delBtn.addEventListener('click', () => del(p.id));
   mapBtns.appendChild(editBtn);
   mapBtns.appendChild(delBtn);
   footer.appendChild(sb);
   footer.appendChild(mapBtns);
-
   div.appendChild(top);
   div.appendChild(footer);
   return div;
 }
 
+function renderStats() {
+  const total = posts.length;
+  const byS = { draft: 0, scheduled: 0, posted: 0 };
+  posts.forEach(p => { if (byS[p.status] !== undefined) byS[p.status]++; });
+  document.getElementById('stats').innerHTML = `
+    <div class="stat-card" style="background:var(--surface);">
+      <div class="stat-label" style="color:var(--text-2);">Total</div>
+      <div class="stat-val" style="color:var(--text);">${total}</div>
+    </div>
+    <div class="stat-card" style="background:#F1EFE8;">
+      <div class="stat-label" style="color:#5F5E5A;">Draft</div>
+      <div class="stat-val" style="color:#444441;">${byS.draft}</div>
+    </div>
+    <div class="stat-card" style="background:#FAEEDA;">
+      <div class="stat-label" style="color:#854F0B;">Scheduled</div>
+      <div class="stat-val" style="color:#633806;">${byS.scheduled}</div>
+    </div>
+    <div class="stat-card" style="background:#EAF3DE;">
+      <div class="stat-label" style="color:#3B6D11;">Posted</div>
+      <div class="stat-val" style="color:#173404;">${byS.posted}</div>
+    </div>
+  `;
+}
+
+function renderFilters() {
+  document.querySelectorAll('.fb').forEach(btn => {
+    const k = btn.dataset.fk;
+    const active = k === `status-${fStatus}` || (k === 'status-all' && fStatus === 'all') || k === `pillar-${fPillar}`;
+    btn.classList.toggle('active', active);
+  });
+}
+
+function renderLegend() {
+  document.getElementById('legend').innerHTML =
+    `<span class="filter-label" style="margin-right:4px;">Categories</span>` +
+    Object.entries(PC).filter(([k]) => k !== '').map(([k, v]) =>
+      `<span class="legend-pill" style="background:${v.bg};color:${v.color};">
+        <span class="legend-dot" style="background:${v.dot};"></span>${v.label}
+      </span>`
+    ).join('');
+}
+
 function renderContent() {
   const fp = filtered();
-  const empty = fp.length === 0;
-  document.getElementById('empty-state').style.display = empty ? 'block' : 'none';
-
+  document.getElementById('empty-state').style.display = fp.length === 0 ? 'block' : 'none';
   if (view === 'grid') {
     const gc = document.getElementById('grid-container');
     gc.innerHTML = '';
@@ -713,14 +656,10 @@ function renderContent() {
 }
 
 function render() {
-  renderStats();
-  renderFilters();
-  renderLegend();
-  renderContent();
+  renderStats(); renderFilters(); renderLegend(); renderContent();
 }
 
-load();
-render();
+load(); render();
 </script>
 </body>
 </html>
